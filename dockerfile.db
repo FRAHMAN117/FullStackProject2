@@ -1,4 +1,5 @@
 FROM mysql:latest
-COPY project.sql /docker-entrypoint-initdb.d/
+COPY Project.sql /docker-entrypoint-initdb.d/
+
 
 

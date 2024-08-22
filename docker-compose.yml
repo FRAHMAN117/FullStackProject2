@@ -6,12 +6,29 @@ services:
       dockerfile: dockerfile.db
     container_name: db
     environment:
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
       MYSQL_USER: admin
       MYSQL_PASSWORD: password
       MYSQL_DATABASE: test_db
     ports:
       - "3308:3306"
+    healthcheck:
+            test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+            timeout: 20s
+            retries: 10
+    
+  api:
+    build:
+      context: ./my-api
+      dockerfile: dockerfile.api
+    container_name: api
+    ports:
+      - "3000:3000"
+    depends_on:
+            db:
+                condition: service_healthy
+
+      
 
 
 
