@@ -43,14 +43,5 @@ CREATE TABLE playlists (
 'songs' table
 '''
 CREATE TABLE songs (
-    id INT NOT NULL AUTO_INCREMENT,
-    name VARCHAR(255) NOT NULL,
-    artist VARCHAR(255) NOT NULL,
-    year INT,
-    playlists_id INT NOT NULL,
-    PRIMARY KEY (id),
-    FOREIGN KEY (playlists_id) REFERENCES playlists(id)
-);
-'''
-
+  
 
