@@ -5,19 +5,19 @@ This project is a simple, Dockerized REST API for managing playlists and songs. 
 ## Project Structure
 docker-compose.yml: Defines the services for the MySQL database (db) and the Node.js API (api), including their build configurations, port mappings, and dependencies.
 
-my-api/: This directory contains the Node.js application.
+'my-api/': This directory contains the Node.js application.
 
-dockerfile.api: The Dockerfile for the API service.
+'dockerfile.api': The Dockerfile for the API service.
 
-index.js: The main Express application file that handles database connection and defines API routes.
+'index.js': The main Express application file that handles database connection and defines API routes.
 
-package.json: Manages the Node.js project's metadata and dependencies (express, mysql2).
+'package.json': Manages the Node.js project's metadata and dependencies (express, mysql2).
 
-db/: This directory would typically contain the Dockerfile and initial SQL scripts for the database.
+'db/': This directory would typically contain the Dockerfile and initial SQL scripts for the database.
 
-dockerfile.db: The Dockerfile for the MySQL database service.
+'dockerfile.db': The Dockerfile for the MySQL database service.
 
-sql_commands.sql (inferred from provided code): A file containing SQL commands to set up the database schema and insert initial data.
+'sql_commands.sql' (inferred from provided code): A file containing SQL commands to set up the database schema and insert initial data.
 
 Technologies Used
 Node.js: The runtime environment for the API.
@@ -31,14 +31,17 @@ Docker & Docker Compose: Used to containerize the application and manage the ser
 Database Schema
 The project uses a simple schema with two tables: playlists and songs.
 
-playlists table
+'playlists' table
+'''
 CREATE TABLE playlists (
     id INT NOT NULL AUTO_INCREMENT,
     name VARCHAR(255) NOT NULL,
     PRIMARY KEY(id)
 );
+'''
 
-songs table
+'songs' table
+'''
 CREATE TABLE songs (
     id INT NOT NULL AUTO_INCREMENT,
     name VARCHAR(255) NOT NULL,
@@ -48,6 +51,7 @@ CREATE TABLE songs (
     PRIMARY KEY (id),
     FOREIGN KEY (playlists_id) REFERENCES playlists(id)
 );
+'''
 
 ## Setup and Installation
 Prerequisites
@@ -62,20 +66,20 @@ Open a terminal and navigate to the project root directory.
 
 Run the following command to build and start the services:
 
-docker-compose up --build
+'docker-compose up --build'
 
-The --build flag ensures that the Docker images for the services are built from the provided Dockerfiles.
+The '--build' flag ensures that the Docker images for the services are built from the provided Dockerfiles.
 
 Once the services are running and the database is healthy, the API will be available.
 
-API Endpoints
+'API Endpoints'
 The API runs on port 3000 and provides the following endpoints:
 
-GET /playlists
+'GET /playlists'
 This endpoint returns a JSON array of all playlists in the database.
 
 Example Response:
-
+'''
 [
   {
     "id": 1,
@@ -94,12 +98,12 @@ Example Response:
     "name": "Sleeping Music"
   }
 ]
-
+'''
 GET /songs
 This endpoint returns a JSON array of all songs in the database.
 
 Example Response:
-
+'''
 [
   {
     "id": 1,
@@ -123,3 +127,4 @@ Example Response:
     "playlists_id": 3
   }
 ]
+'''
