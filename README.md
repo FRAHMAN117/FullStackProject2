@@ -28,17 +28,6 @@ MySQL: The relational database management system for storing data.
 
 Docker & Docker Compose: Used to containerize the application and manage the services.
 
-Database Schema
-The project uses a simple schema with two tables: playlists and songs.
-
-'playlists' table
-'''
-CREATE TABLE playlists (
-    id INT NOT NULL AUTO_INCREMENT,
-    name VARCHAR(255) NOT NULL,
-    PRIMARY KEY(id)
-);
-'''
 
 'songs' table
 '''
